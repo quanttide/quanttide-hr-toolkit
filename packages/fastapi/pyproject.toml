@@ -5,9 +5,7 @@ description = "QtCloud HR recruitment pipeline toolkit (FastAPI)"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.115.0",
-    "uvicorn[standard]>=0.30.0",
     "sqlalchemy>=2.0.0",
-    "pydantic-settings>=2.0.0",
 ]
 
 [project.entry-points."hr_toolkit"]
