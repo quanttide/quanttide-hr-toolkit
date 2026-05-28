@@ -1,2 +1,0 @@
-[hr_toolkit]
-app = hr_toolkit:create_app
