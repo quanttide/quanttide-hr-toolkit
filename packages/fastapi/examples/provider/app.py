@@ -20,7 +20,7 @@ def app_get_db():
         db.close()
 
 
-sub_app = create_app()
+sub_app = create_app(title="Provider HR", description="招聘进度追踪示例")
 sub_app.dependency_overrides[lib_get_db] = app_get_db
 
 app = FastAPI()
