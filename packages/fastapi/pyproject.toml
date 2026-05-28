@@ -8,9 +8,6 @@ dependencies = [
     "sqlalchemy>=2.0.0",
 ]
 
-[project.entry-points."fastapi_quanttide_hr"]
-app = "fastapi_quanttide_hr:create_app"
-
 [build-system]
 requires = ["setuptools>=75.0", "wheel"]
 build-backend = "setuptools.build_meta"

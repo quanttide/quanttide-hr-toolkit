@@ -2,8 +2,8 @@ from fastapi import FastAPI
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from fastapi_quanttide_hr import create_app
 from fastapi_quanttide_hr.database import Base, get_db as lib_get_db
+from fastapi_quanttide_hr.routers import pipeline, recruitments
 
 DATABASE_URL = "sqlite:///./hr.db"
 
@@ -20,8 +20,7 @@ def app_get_db():
         db.close()
 
 
-sub_app = create_app(title="Provider HR", description="招聘进度追踪示例")
-sub_app.dependency_overrides[lib_get_db] = app_get_db
-
-app = FastAPI()
-app.mount("", sub_app)
+app = FastAPI(title="Provider HR", description="招聘进度追踪示例")
+app.dependency_overrides[lib_get_db] = app_get_db
+app.include_router(recruitments.router)
+app.include_router(pipeline.router)
