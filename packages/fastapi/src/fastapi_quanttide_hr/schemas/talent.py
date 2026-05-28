@@ -11,7 +11,8 @@ class TalentCreate(BaseModel):
 
 
 class TalentUpdate(BaseModel):
-    pass
+    email: str | None = None
+    real_name: str | None = None
 
 
 class TalentTransition(BaseModel):

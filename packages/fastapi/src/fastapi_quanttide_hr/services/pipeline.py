@@ -37,13 +37,3 @@ def _talent_to_card(t: Talent) -> dict:
         "created_at": t.created_at.isoformat(),
     }
 
-
-def get_status_counts(db: Session) -> list[dict]:
-    from sqlalchemy import func
-
-    rows = (
-        db.query(Talent.status, func.count(Talent.id))
-        .group_by(Talent.status)
-        .all()
-    )
-    return [{"status": status.value, "count": count} for status, count in rows]
