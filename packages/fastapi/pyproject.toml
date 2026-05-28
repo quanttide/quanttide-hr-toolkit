@@ -1,0 +1,21 @@
+[project]
+name = "hr-toolkit-fastapi"
+version = "0.1.0"
+description = "QtCloud HR recruitment pipeline toolkit (FastAPI)"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "sqlalchemy>=2.0.0",
+    "pydantic-settings>=2.0.0",
+]
+
+[project.entry-points."hr_toolkit"]
+app = "hr_toolkit:create_app"
+
+[build-system]
+requires = ["setuptools>=75.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
