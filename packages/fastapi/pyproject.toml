@@ -1,5 +1,5 @@
 [project]
-name = "hr-toolkit-fastapi"
+name = "fastapi-quanttide-hr"
 version = "0.1.0"
 description = "QtCloud HR recruitment pipeline toolkit (FastAPI)"
 requires-python = ">=3.12"
@@ -8,8 +8,8 @@ dependencies = [
     "sqlalchemy>=2.0.0",
 ]
 
-[project.entry-points."hr_toolkit"]
-app = "hr_toolkit:create_app"
+[project.entry-points."fastapi_quanttide_hr"]
+app = "fastapi_quanttide_hr:create_app"
 
 [build-system]
 requires = ["setuptools>=75.0", "wheel"]
