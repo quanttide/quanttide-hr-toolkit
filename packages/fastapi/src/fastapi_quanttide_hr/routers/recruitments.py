@@ -45,6 +45,11 @@ def delete_recruitment(recruitment_id: int, db: Session = Depends(get_db)):
     db.commit()
 
 
+def _recruitment_exists(recruitment_id: int, db: Session) -> None:
+    if not db.query(Recruitment).filter(Recruitment.id == recruitment_id).first():
+        raise HTTPException(404, "Recruitment not found")
+
+
 @router.get("/{recruitment_id}/talents", response_model=list[TalentRead])
 def list_talents(
     recruitment_id: int,
@@ -53,6 +58,7 @@ def list_talents(
     limit: int = Query(100, ge=1, le=500),
     db: Session = Depends(get_db),
 ):
+    _recruitment_exists(recruitment_id, db)
     qb = db.query(Talent).filter(Talent.recruitment_id == recruitment_id)
     if status:
         qb = qb.filter(Talent.status == status)
